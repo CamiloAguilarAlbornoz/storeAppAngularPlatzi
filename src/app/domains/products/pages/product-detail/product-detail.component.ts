@@ -12,7 +12,7 @@ import { ProductService } from '@shared/service/product.service';
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
-export class ProductDetailComponent implements OnInit {
+export default class ProductDetailComponent implements OnInit {
 
   @Input()
   public id?: string;
