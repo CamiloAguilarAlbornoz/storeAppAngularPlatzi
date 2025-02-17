@@ -1,1 +1,16 @@
-<p>about works!</p>
+<div class="px-10">
+  <h1 class="text-lg font-bold">About</h1>
+  <p class="text-xs">
+    Lorem ipsum dolor sit amet, <span highlight>consectetur adipisicing elit. Similique</span>, distinctio doloribus, provident omnis quod
+    enim sint soluta cum, dicta sequi dolore ipsum accusantium. Ullam impedit animi magni quis architecto. Maxime?
+  </p>
+  <p class="text-xs">
+    Número de clientes
+    @if (duration() > 0) {
+      <app-counter [duration]="duration()" [message]="message()"></app-counter>
+    }
+  </p>
+  <div>
+    <app-wave-audio audioUrl="/src/assets/audio.mp3"></app-wave-audio>
+  </div>
+</div>

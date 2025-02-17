@@ -1,12 +1,6 @@
-<div class="grid grid-cols-3 gap-8">
-  <app-product img="https://picsum.photos/640/640?r=1" [title]="'Producto 1'" [price]="12"
-    (addToCar)="fromChild($event)"/> <!--  el $event corresponde a lo que llego desde el hijo -->
-  <app-product img="https://picsum.photos/640/640?r=2" [title]="'Producto 2'" [price]="12"
-    (addToCar)="fromChild($event)"/>
-  <app-product img="https://picsum.photos/640/640?r=3" [title]="'Producto 3'" [price]="12"
-    (addToCar)="fromChild($event)"/>
-  <app-product img="https://picsum.photos/640/640?r=4" [title]="'Producto 4'" [price]="12"
-    (addToCar)="fromChild($event)"/>
-  <app-product img="https://picsum.photos/640/640?r=5" [title]="'Producto 5'" [price]="12"
-    (addToCar)="fromChild($event)"/>
+<div class="grid grid-cols-4 gap-8 mt-5">
+  @for(product of products(); track $index ) {
+    <app-product [product]="product"
+    (addToCar)="addToCart($event)"/>
+  }
 </div>
