@@ -1,4 +1,4 @@
-import { Component, OnInit, signal } from '@angular/core';
+import { Component, Input, OnChanges, OnInit, signal, SimpleChanges } from '@angular/core';
 import { ProductService } from '@shared/service/product.service';
 import { CartService } from '@shared/service/cart.service';
 import { Product } from '@shared/models/product.model';
@@ -14,10 +14,13 @@ import { RouterLinkWithHref } from '@angular/router';
   templateUrl: './list.component.html',
   styleUrl: './list.component.css'
 })
-export class ListComponent implements OnInit {
+export class ListComponent implements OnInit, OnChanges {
 
   public products = signal<Product[]>([]);
   public categories = signal<Category[]>([]);
+
+  @Input()
+  public category_id?: string;
 
   constructor(
     private cartService: CartService,
@@ -25,8 +28,11 @@ export class ListComponent implements OnInit {
     private categoryService: CategoryService
   ) {}
 
-  ngOnInit(): void {
+  ngOnChanges(changes: SimpleChanges): void {
     this.getProducts();
+  }
+
+  ngOnInit(): void {
     this.getCategories();
   }
 
@@ -44,7 +50,7 @@ export class ListComponent implements OnInit {
   }
 
   private getProducts() {
-    this.productService.getProducts().subscribe(
+    this.productService.getProducts(this.category_id).subscribe(
       {
         next: products => this.products.set(products),
         error: () => {}
