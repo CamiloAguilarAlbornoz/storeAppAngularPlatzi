@@ -6,7 +6,8 @@ import { Pipe, PipeTransform } from '@angular/core';
 })
 export class CorrectImagePipe implements PipeTransform {
 
-  transform(value: string): string {
+  transform(value?: string): string {
+    if (!value) return '';
     let cleanedImage = value.replace(/^\["?|"?]$/g, '');
     try {
       cleanedImage = JSON.parse(cleanedImage);

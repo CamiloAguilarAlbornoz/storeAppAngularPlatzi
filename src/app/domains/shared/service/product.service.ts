@@ -20,6 +20,6 @@ export class ProductService {
   }
 
   public getOne(id: string) {
-    return this.http.get<Product[]>(`${this.url}/${id}`);
+    return this.http.get<Product>(`${this.url}/${id}`);
   }
 }
